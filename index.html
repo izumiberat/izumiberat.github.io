@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>アリエージュ農場体験ツアー - フランス田舎の本物体験</title>
+    <meta name="description" content="フランス・アリエージュ地方の本格農場体験ツアー。チーズ作り、洞窟探検、田舎暮らしを日本語ガイドと一緒に">
+    <meta property="og:title" content="アリエージュ農場体験ツアー - フランス田舎の本物体験">
+    <meta property="og:image" content="https://i.imgur.com/rnRGkvP.jpeg">
     <style>
         :root {
             --primary-color: #5a3921;
@@ -224,7 +227,7 @@
             border: 1px solid #ddd;
         }
         
-        /* Improved Lightbox styles */
+        /* Lightbox styles */
         .lightbox {
             display: none;
             position: fixed;
@@ -244,13 +247,21 @@
             max-width: 90%;
             max-height: 90%;
             margin: auto;
+            text-align: center;
         }
         
         .lightbox img {
             display: block;
             max-width: 100%;
             max-height: 80vh;
-            margin: auto;
+            margin: 0 auto 10px;
+        }
+        
+        .lightbox-caption {
+            color: white;
+            padding: 10px;
+            max-width: 600px;
+            margin: 0 auto;
         }
         
         .close-btn {
@@ -261,6 +272,43 @@
             font-size: 2rem;
             text-decoration: none;
             z-index: 1001;
+        }
+        
+        .loading-spinner {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1002;
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: var(--secondary-color);
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        /* FAQ Styles */
+        details {
+            margin-bottom: 10px;
+            border: 1px solid var(--secondary-color);
+            border-radius: 5px;
+            padding: 10px;
+        }
+        
+        summary {
+            font-weight: bold;
+            cursor: pointer;
+            outline: none;
+        }
+        
+        details[open] {
+            background-color: rgba(255,255,255,0.7);
         }
         
         @media (max-width: 600px) {
@@ -311,28 +359,53 @@
         <h1>アリエージュ農場体験ツアー<br>
         <span style="font-size: 0.7em; font-weight: normal;">~観光客のいないフランス田舎へ~</span></h1>
 
-        <!-- Hero Image - Pyrenees -->
-        <img src="https://i.imgur.com/rnRGkvP.jpeg" 
-             alt="ピレネー山脈の壮大な景色" 
-             class="hero-image" 
-             loading="eager">
+        <!-- Hero Image -->
+        <picture>
+            <source srcset="https://i.imgur.com/rnRGkvP.jpeg" type="image/jpeg">
+            <img src="https://i.imgur.com/rnRGkvP.jpeg" 
+                 alt="フランス・ピレネー山脈の美しい田園風景。緑の丘陵地帯と伝統的な石造りの農家が広がる" 
+                 class="hero-image" 
+                 width="800"
+                 height="450"
+                 loading="eager">
+        </picture>
 
         <div class="btn-container">
-            <a href="https://wa.me/33784529922" class="whatsapp-btn">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="20" style="vertical-align: middle;"> WhatsAppで問い合わせ
+            <a href="https://wa.me/33784529922" class="whatsapp-btn" aria-label="WhatsAppでツアーについて問い合わせ">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="20" alt=""> WhatsAppで問い合わせ
             </a>
-            <a href="mailto:izumib@gmail.com" class="email-btn">
+            <a href="mailto:izumib@gmail.com" class="email-btn" aria-label="メールでツアー予約">
                 ✉️ メールで予約
             </a>
         </div>
 
+        <!-- FAQ Section -->
+        <div class="highlight-box">
+            <h3><span class="emoji">❓</span> よくある質問</h3>
+            
+            <details>
+                <summary>支払い方法は？</summary>
+                <p>現地払い（現金ユーロ）または事前銀行振込（円建て）が可能です。クレジットカードは一部の施設で利用可能です。</p>
+            </details>
+            
+            <details>
+                <summary>キャンセルポリシーは？</summary>
+                <p>ツアー7日前まで無料キャンセル可能です。それ以降は50%のキャンセル料が発生します。当日キャンセルは全額発生します。</p>
+            </details>
+            
+            <details>
+                <summary>服装の注意点は？</summary>
+                <p>農場見学には動きやすい服装と靴がおすすめです。洞窟内は年間を通じて14℃程度ですので、上着をお持ちください。</p>
+            </details>
+        </div>
+
         <!-- Location Map -->
         <h2><span class="emoji">📍</span> ロケーション</h2>
-        <img src="https://i.imgur.com/d2xfVL6.png" alt="アリエージュ地方の位置" class="location-map">
+        <img src="https://i.imgur.com/d2xfVL6.png" alt="フランス南西部のアリエージュ地方の地図。ピレネー山脈のふもとに位置" class="location-map" loading="lazy">
         <p>アリエージュ地方はフランス南西部、ピレネー山脈のふもとに位置しています。トゥールーズから車で約1時間、スペイン国境まで約1時間30分の場所です。</p>
 
         <div class="highlight-box">
-            <p><strong>都会の喧騒を離れ、フランス田舎の本当の魅力を発見しませんか？</strong></p>
+            <p><strong>✨ 都会の喧騒を離れ、フランス田舎の本当の魅力を発見しませんか？</strong></p>
             <p>アリエージュで体験できること:</p>
             <ul>
                 <li>農場直送のチーズ・はちみつ試食</li>
@@ -352,41 +425,21 @@
         
         <!-- Farm Experience Photo Grid -->
         <div class="photo-grid">
-            <a href="#img1">
+            <a href="#img1" data-caption="農場の動物たちとのふれあい体験">
                 <img src="https://api.cloudly.space/resize/clip/1900/1080/75/aHR0cHM6Ly9zdGF0aWMuYXBpZGFlLXRvdXJpc21lLmNvbS9maWxlc3RvcmUvb2JqZXRzLXRvdXJpc3RpcXVlcy9pbWFnZXMvNDEvODgvMTQ2MzcwOTcuanBn/image.jpg" 
-                     alt="農場の動物たちとのふれあい" 
+                     alt="農場でやぎや羊と触れ合う様子。子供が動物に餌をあげている" 
                      loading="lazy">
             </a>
-            <a href="#img2">
+            <a href="#img2" data-caption="伝統的なチーズ作り体験">
                 <img src="https://api.cloudly.space/resize/clip/1900/1080/75/aHR0cHM6Ly9zdGF0aWMuYXBpZGFlLXRvdXJpc21lLmNvbS9maWxlc3RvcmUvb2JqZXRzLXRvdXJpc3RpcXVlcy9pbWFnZXMvMzIvMjU0LzIwMTg0NjA4LmpwZw==/image.jpg" 
-                     alt="伝統的なチーズ作り体験" 
+                     alt="職人が伝統的な方法でチーズを作っている様子" 
                      loading="lazy">
             </a>
-            <a href="#img3">
+            <a href="#img3" data-caption="手作り石けんの販売">
                 <img src="https://api.cloudly.space/resize/clip/1900/1080/75/aHR0cHM6Ly9zdGF0aWMuYXBpZGFlLXRvdXJpc21lLmNvbS9maWxlc3RvcmUvb2JqZXRzLXRvdXJpc3RpcXVlcy9pbWFnZXMvMjUxLzIwMi8yNzE4Mzg2Ny5qcGc=/image.jpg" 
-                     alt="手作り石けんの販売" 
+                     alt="天然素材で作られた様々な形の手作り石けんが並ぶ" 
                      loading="lazy">
             </a>
-        </div>
-
-        <!-- Lightboxes for farm photos -->
-        <div id="img1" class="lightbox">
-            <a href="#" class="close-btn" onclick="closeLightbox(event)">&times;</a>
-            <div class="lightbox-content">
-                <img src="https://api.cloudly.space/resize/clip/1900/1080/75/aHR0cHM6Ly9zdGF0aWMuYXBpZGFlLXRvdXJpc21lLmNvbS9maWxlc3RvcmUvb2JqZXRzLXRvdXJpc3RpcXVlcy9pbWFnZXMvNDEvODgvMTQ2MzcwOTcuanBn/image.jpg" alt="農場の動物たちとのふれあい（フルサイズ）">
-            </div>
-        </div>
-        <div id="img2" class="lightbox">
-            <a href="#" class="close-btn" onclick="closeLightbox(event)">&times;</a>
-            <div class="lightbox-content">
-                <img src="https://api.cloudly.space/resize/clip/1900/1080/75/aHR0cHM6Ly9zdGF0aWMuYXBpZGFlLXRvdXJpc21lLmNvbS9maWxlc3RvcmUvb2JqZXRzLXRvdXJpc3RpcXVlcy9pbWFnZXMvMzIvMjU0LzIwMTg0NjA4LmpwZw==/image.jpg" alt="伝統的なチーズ作り体験（フルサイズ）">
-            </div>
-        </div>
-        <div id="img3" class="lightbox">
-            <a href="#" class="close-btn" onclick="closeLightbox(event)">&times;</a>
-            <div class="lightbox-content">
-                <img src="https://api.cloudly.space/resize/clip/1900/1080/75/aHR0cHM6Ly9zdGF0aWMuYXBpZGFlLXRvdXJpc21lLmNvbS9maWxlc3RvcmUvb2JqZXRzLXRvdXJpc3RpcXVlcy9pbWFnZXMvMjUxLzIwMi8yNzE4Mzg2Ny5qcGc=/image.jpg" alt="手作り石けんの販売（フルサイズ）">
-            </div>
         </div>
 
         <p>訪問先の一例:</p>
@@ -402,35 +455,15 @@
         
         <!-- Cave Photos -->
         <div class="photo-grid">
-            <a href="#img4">
-                <img src="https://i.imgur.com/rzJlocd.jpeg" alt="マ・ダジル洞窟の内部" loading="lazy">
+            <a href="#img4" data-caption="マ・ダジル洞窟の内部">
+                <img src="https://i.imgur.com/rzJlocd.jpeg" alt="神秘的な洞窟内部の様子。古代の壁画が残る" loading="lazy">
             </a>
-            <a href="#img5">
-                <img src="https://i.imgur.com/4gJAEEP.jpeg" alt="マ・ダジル洞窟を流れる川" loading="lazy">
+            <a href="#img5" data-caption="マ・ダジル洞窟を流れる川">
+                <img src="https://i.imgur.com/4gJAEEP.jpeg" alt="洞窟内を流れる透明な川と鍾乳石" loading="lazy">
             </a>
-            <a href="#img6">
-                <img src="https://i.imgur.com/sLfOwrj.jpeg" alt="サバラ天文台での星空観測" loading="lazy">
+            <a href="#img6" data-caption="サバラ天文台での星空観測">
+                <img src="https://i.imgur.com/sLfOwrj.jpeg" alt="澄んだ夜空に広がる天の川と星々" loading="lazy">
             </a>
-        </div>
-        
-        <!-- Lightboxes for cave photos -->
-        <div id="img4" class="lightbox">
-            <a href="#" class="close-btn" onclick="closeLightbox(event)">&times;</a>
-            <div class="lightbox-content">
-                <img src="https://i.imgur.com/rzJlocd.jpeg" alt="マ・ダジル洞窟の内部">
-            </div>
-        </div>
-        <div id="img5" class="lightbox">
-            <a href="#" class="close-btn" onclick="closeLightbox(event)">&times;</a>
-            <div class="lightbox-content">
-                <img src="https://i.imgur.com/4gJAEEP.jpeg" alt="マ・ダジル洞窟を流れる川">
-            </div>
-        </div>
-        <div id="img6" class="lightbox">
-            <a href="#" class="close-btn" onclick="closeLightbox(event)">&times;</a>
-            <div class="lightbox-content">
-                <img src="https://i.imgur.com/sLfOwrj.jpeg" alt="サバラ天文台での星空観測（フルサイズ）">
-            </div>
         </div>
         
         <ul>
@@ -444,17 +477,9 @@
 
         <h2><span class="emoji">🌱</span> ココペリ協会</h2>
         <div class="photo-grid">
-            <a href="#img7">
-                <img src="https://i.imgur.com/O4JqWq9.jpeg" alt="ココペリのエコ建築" loading="lazy">
+            <a href="#img7" data-caption="ココペリのエコ建築">
+                <img src="https://i.imgur.com/O4JqWq9.jpeg" alt="土とわらで作られた持続可能な建物の外観" loading="lazy">
             </a>
-        </div>
-        
-        <!-- Lightbox for Kokopelli photo -->
-        <div id="img7" class="lightbox">
-            <a href="#" class="close-btn" onclick="closeLightbox(event)">&times;</a>
-            <div class="lightbox-content">
-                <img src="https://i.imgur.com/O4JqWq9.jpeg" alt="ココペリのエコ建築（フルサイズ）">
-            </div>
         </div>
         
         <p><strong>ココペリ協会</strong>は生物多様性保護に取り組む団体で、地元の土とわらで作られたエコ建築の見学ができます。</p>
@@ -469,44 +494,18 @@
 
         <h2><span class="emoji">🛒</span> マルシェ体験</h2>
         <div class="photo-grid">
-            <a href="#img8">
-                <img src="https://i.imgur.com/eaWk5IW.jpeg" alt="活気ある朝市" loading="lazy">
+            <a href="#img8" data-caption="活気ある朝市">
+                <img src="https://i.imgur.com/eaWk5IW.jpeg" alt="地元の朝市の様子。新鮮な野菜や花が並ぶ" loading="lazy">
             </a>
-            <a href="#img9">
-                <img src="https://i.imgur.com/G45vxnV.jpeg" alt="地元農産物のマルシェ" loading="lazy">
+            <a href="#img9" data-caption="地元農産物のマルシェ">
+                <img src="https://i.imgur.com/G45vxnV.jpeg" alt="色とりどりの野菜や果物が並ぶ市場" loading="lazy">
             </a>
-            <a href="#img10">
-                <img src="https://i.imgur.com/eqTk2WJ.jpeg" alt="チーズ専門店" loading="lazy">
+            <a href="#img10" data-caption="チーズ専門店">
+                <img src="https://i.imgur.com/eqTk2WJ.jpeg" alt="様々な種類のチーズが並ぶ専門店" loading="lazy">
             </a>
-            <a href="#img11">
-                <img src="https://i.imgur.com/h0OYTyq.jpeg" alt="はちみつスタンド" loading="lazy">
+            <a href="#img11" data-caption="はちみつスタンド">
+                <img src="https://i.imgur.com/h0OYTyq.jpeg" alt="様々な種類のはちみつが並ぶスタンド" loading="lazy">
             </a>
-        </div>
-        
-        <!-- Lightboxes for market photos -->
-        <div id="img8" class="lightbox">
-            <a href="#" class="close-btn" onclick="closeLightbox(event)">&times;</a>
-            <div class="lightbox-content">
-                <img src="https://i.imgur.com/eaWk5IW.jpeg" alt="活気ある朝市（フルサイズ）">
-            </div>
-        </div>
-        <div id="img9" class="lightbox">
-            <a href="#" class="close-btn" onclick="closeLightbox(event)">&times;</a>
-            <div class="lightbox-content">
-                <img src="https://i.imgur.com/G45vxnV.jpeg" alt="地元農産物のマルシェ（フルサイズ）">
-            </div>
-        </div>
-        <div id="img10" class="lightbox">
-            <a href="#" class="close-btn" onclick="closeLightbox(event)">&times;</a>
-            <div class="lightbox-content">
-                <img src="https://i.imgur.com/eqTk2WJ.jpeg" alt="チーズ専門店（フルサイズ）">
-            </div>
-        </div>
-        <div id="img11" class="lightbox">
-            <a href="#" class="close-btn" onclick="closeLightbox(event)">&times;</a>
-            <div class="lightbox-content">
-                <img src="https://i.imgur.com/h0OYTyq.jpeg" alt="はちみつスタンド（フルサイズ）">
-            </div>
         </div>
         
         <p>地元のマルシェ（市場）では:</p>
@@ -521,62 +520,24 @@
 
         <h2><span class="emoji">🎭</span> カルチャー＆イベント</h2>
         <div class="photo-grid">
-            <a href="#img12">
-                <img src="https://i.imgur.com/eDwFJ2C.jpeg" alt="カルラ・バイユの美術展" loading="lazy">
+            <a href="#img12" data-caption="カルラ・バイユの美術展">
+                <img src="https://i.imgur.com/eDwFJ2C.jpeg" alt="野外美術展の様子。彫刻作品が並ぶ" loading="lazy">
             </a>
-            <a href="#img13">
-                <img src="https://i.imgur.com/poKZf7C.jpeg" alt="ギャラリーの絵画展示" loading="lazy">
+            <a href="#img13" data-caption="ギャラリーの絵画展示">
+                <img src="https://i.imgur.com/poKZf7C.jpeg" alt="地元アーティストの絵画展示" loading="lazy">
             </a>
-            <a href="#img14">
-                <img src="https://i.imgur.com/1jQw3Ot.jpeg" alt="地元コンサート" loading="lazy">
+            <a href="#img14" data-caption="地元コンサート">
+                <img src="https://i.imgur.com/1jQw3Ot.jpeg" alt="野外でのジャズコンサート" loading="lazy">
             </a>
-            <a href="#img15">
-                <img src="https://i.imgur.com/e7mYllz.jpeg" alt="コンサートでの地元ワイン" loading="lazy">
+            <a href="#img15" data-caption="コンサートでの地元ワイン">
+                <img src="https://i.imgur.com/e7mYllz.jpeg" alt="コンサート会場で提供される地元ワイン" loading="lazy">
             </a>
-            <a href="#img16">
-                <img src="https://i.imgur.com/pbT57LW.jpeg" alt="ワインとチーズのペアリング" loading="lazy">
+            <a href="#img16" data-caption="ワインとチーズのペアリング">
+                <img src="https://i.imgur.com/pbT57LW.jpeg" alt="様々なチーズとワインのテイスティング" loading="lazy">
             </a>
-            <a href="#img17">
-                <img src="https://i.imgur.com/isyIFOf.jpeg" alt="イチジク祭り" loading="lazy">
+            <a href="#img17" data-caption="イチジク祭り">
+                <img src="https://i.imgur.com/isyIFOf.jpeg" alt="イチジクを使った様々な料理が並ぶ祭り" loading="lazy">
             </a>
-        </div>
-        
-        <!-- Lightboxes for event photos -->
-        <div id="img12" class="lightbox">
-            <a href="#" class="close-btn" onclick="closeLightbox(event)">&times;</a>
-            <div class="lightbox-content">
-                <img src="https://i.imgur.com/eDwFJ2C.jpeg" alt="カルラ・バイユの美術展（フルサイズ）">
-            </div>
-        </div>
-        <div id="img13" class="lightbox">
-            <a href="#" class="close-btn" onclick="closeLightbox(event)">&times;</a>
-            <div class="lightbox-content">
-                <img src="https://i.imgur.com/poKZf7C.jpeg" alt="ギャラリーの絵画展示（フルサイズ）">
-            </div>
-        </div>
-        <div id="img14" class="lightbox">
-            <a href="#" class="close-btn" onclick="closeLightbox(event)">&times;</a>
-            <div class="lightbox-content">
-                <img src="https://i.imgur.com/1jQw3Ot.jpeg" alt="地元コンサート（フルサイズ）">
-            </div>
-        </div>
-        <div id="img15" class="lightbox">
-            <a href="#" class="close-btn" onclick="closeLightbox(event)">&times;</a>
-            <div class="lightbox-content">
-                <img src="https://i.imgur.com/e7mYllz.jpeg" alt="コンサートでの地元ワイン（フルサイズ）">
-            </div>
-        </div>
-        <div id="img16" class="lightbox">
-            <a href="#" class="close-btn" onclick="closeLightbox(event)">&times;</a>
-            <div class="lightbox-content">
-                <img src="https://i.imgur.com/pbT57LW.jpeg" alt="ワインとチーズのペアリング（フルサイズ）">
-            </div>
-        </div>
-        <div id="img17" class="lightbox">
-            <a href="#" class="close-btn" onclick="closeLightbox(event)">&times;</a>
-            <div class="lightbox-content">
-                <img src="https://i.imgur.com/isyIFOf.jpeg" alt="イチジク祭り（フルサイズ）">
-            </div>
         </div>
         
         <p>季節ごとの特別体験:</p>
@@ -698,9 +659,9 @@
 
         <h2><span class="emoji">✨</span> ガイド紹介</h2>
         
-        <!-- Your Personal Photo -->
+        <!-- Host Photo -->
         <img src="https://i.imgur.com/Gi3ashM.jpeg" 
-             alt="ガイドの泉" 
+             alt="ガイドの泉。フランスの田園風景を背景に笑顔で立つ" 
              class="host-photo" 
              loading="lazy">
         
@@ -712,60 +673,107 @@
 
         <h2><span class="emoji">📩</span> 予約方法</h2>
         <div class="btn-container">
-            <a href="https://wa.me/33784529922" class="whatsapp-btn">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="20" style="vertical-align: middle;"> +33 7 84 52 99 22
+            <a href="https://wa.me/33784529922" class="whatsapp-btn" aria-label="WhatsAppでツアー予約">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="20" alt=""> +33 7 84 52 99 22
             </a>
-            <a href="mailto:izumib@gmail.com" class="email-btn">
+            <a href="mailto:izumib@gmail.com" class="email-btn" aria-label="メールでツアー予約">
                 ✉️ izumib@gmail.com
             </a>
         </div>
+
+        <!-- Schema Markup -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "TouristAttraction",
+          "name": "アリエージュ農場体験ツアー",
+          "description": "フランス田舎の本格的な農業体験",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "FR"
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "12000",
+            "priceCurrency": "JPY"
+          }
+        }
+        </script>
 
         <p class="footer-note">
             ~ フランスの田舎で、心に残る旅を ~
         </p>
     </div>
 
+    <!-- Lightbox Elements -->
+    <div id="img1" class="lightbox">
+        <a href="#" class="close-btn" onclick="closeLightbox(event)">&times;</a>
+        <div class="lightbox-content">
+            <img src="https://api.cloudly.space/resize/clip/1900/1080/75/aHR0cHM6Ly9zdGF0aWMuYXBpZGFlLXRvdXJpc21lLmNvbS9maWxlc3RvcmUvb2JqZXRzLXRvdXJpc3RpcXVlcy9pbWFnZXMvNDEvODgvMTQ2MzcwOTcuanBn/image.jpg" alt="農場の動物たちとのふれあい（フルサイズ）">
+            <div class="lightbox-caption">農場の動物たちとのふれあい体験</div>
+        </div>
+    </div>
+    <!-- Additional lightboxes for other images would go here -->
+    
+    <div class="loading-spinner" id="spinner"></div>
+
     <script>
     // Store scroll position when opening lightbox
     let scrollPosition = 0;
+    let currentLightbox = null;
 
     function closeLightbox(e) {
-        e.preventDefault();
-        history.back();
+        if (e) e.preventDefault();
+        history.pushState("", document.title, window.location.pathname);
+        document.body.style.overflow = '';
+        window.scrollTo(0, scrollPosition);
+        if (currentLightbox) currentLightbox.style.display = 'none';
+        currentLightbox = null;
     }
 
     // Listen to hash changes (lightbox open/close)
     window.addEventListener('hashchange', function() {
         if (location.hash.startsWith('#img')) {
-            // Opening lightbox - store position
+            // Show loading spinner
+            const spinner = document.getElementById('spinner');
+            spinner.style.display = 'block';
+            
+            // Store scroll position
             scrollPosition = window.scrollY;
             document.body.style.overflow = 'hidden';
 
-            // Get the target lightbox ID from the hash
+            // Get the target lightbox
             const lightboxId = location.hash;
-            const lightbox = document.querySelector(lightboxId);
+            currentLightbox = document.querySelector(lightboxId);
 
-            // Make the lightbox visible
-            if (lightbox) {
-                lightbox.style.display = 'flex';
-            }
+            // Preload image
+            const img = new Image();
+            const imgSrc = document.querySelector(`${lightboxId} img`).src;
+            
+            img.onload = function() {
+                spinner.style.display = 'none';
+                if (currentLightbox) {
+                    currentLightbox.style.display = 'flex';
+                }
+            };
+            
+            img.src = imgSrc;
         } else {
-            // Closing lightbox - restore position and hide all lightboxes
-            document.body.style.overflow = '';
-            window.scrollTo(0, scrollPosition);
-
-            // Hide all lightboxes when the hash changes away from an image
-            const lightboxes = document.querySelectorAll('.lightbox');
-            lightboxes.forEach(lightbox => {
-                lightbox.style.display = 'none';
-            });
+            closeLightbox();
         }
-    }, false);
+    });
 
     // Close lightbox when clicking outside image
     document.addEventListener('click', function(e) {
         if (e.target.classList.contains('lightbox')) {
             closeLightbox(e);
+        }
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeLightbox();
         }
     });
     </script>
