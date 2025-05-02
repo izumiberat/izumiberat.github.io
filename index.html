@@ -224,7 +224,7 @@
             border: 1px solid #ddd;
         }
         
-        /* Lightbox styles */
+        /* Improved Lightbox styles */
         .lightbox {
             display: none;
             position: fixed;
@@ -236,24 +236,31 @@
             z-index: 1000;
             justify-content: center;
             align-items: center;
+            overflow: auto;
+        }
+        
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            margin: auto;
         }
         
         .lightbox img {
-            max-width: 90%;
-            max-height: 90%;
-        }
-        
-        .lightbox:target {
-            display: flex;
+            display: block;
+            max-width: 100%;
+            max-height: 80vh;
+            margin: auto;
         }
         
         .close-btn {
-            position: absolute;
+            position: fixed;
             top: 20px;
             right: 20px;
             color: white;
             font-size: 2rem;
             text-decoration: none;
+            z-index: 1001;
         }
         
         @media (max-width: 600px) {
@@ -364,16 +371,22 @@
 
         <!-- Lightboxes for farm photos -->
         <div id="img1" class="lightbox">
-            <a href="#" class="close-btn">&times;</a>
-            <img src="https://api.cloudly.space/resize/clip/1900/1080/75/aHR0cHM6Ly9zdGF0aWMuYXBpZGFlLXRvdXJpc21lLmNvbS9maWxlc3RvcmUvb2JqZXRzLXRvdXJpc3RpcXVlcy9pbWFnZXMvNDEvODgvMTQ2MzcwOTcuanBn/image.jpg" alt="農場の動物たちとのふれあい（フルサイズ）">
+            <a href="#" class="close-btn" onclick="closeLightbox(event)">&times;</a>
+            <div class="lightbox-content">
+                <img src="https://api.cloudly.space/resize/clip/1900/1080/75/aHR0cHM6Ly9zdGF0aWMuYXBpZGFlLXRvdXJpc21lLmNvbS9maWxlc3RvcmUvb2JqZXRzLXRvdXJpc3RpcXVlcy9pbWFnZXMvNDEvODgvMTQ2MzcwOTcuanBn/image.jpg" alt="農場の動物たちとのふれあい（フルサイズ）">
+            </div>
         </div>
         <div id="img2" class="lightbox">
-            <a href="#" class="close-btn">&times;</a>
-            <img src="https://api.cloudly.space/resize/clip/1900/1080/75/aHR0cHM6Ly9zdGF0aWMuYXBpZGFlLXRvdXJpc21lLmNvbS9maWxlc3RvcmUvb2JqZXRzLXRvdXJpc3RpcXVlcy9pbWFnZXMvMzIvMjU0LzIwMTg0NjA4LmpwZw==/image.jpg" alt="伝統的なチーズ作り体験（フルサイズ）">
+            <a href="#" class="close-btn" onclick="closeLightbox(event)">&times;</a>
+            <div class="lightbox-content">
+                <img src="https://api.cloudly.space/resize/clip/1900/1080/75/aHR0cHM6Ly9zdGF0aWMuYXBpZGFlLXRvdXJpc21lLmNvbS9maWxlc3RvcmUvb2JqZXRzLXRvdXJpc3RpcXVlcy9pbWFnZXMvMzIvMjU0LzIwMTg0NjA4LmpwZw==/image.jpg" alt="伝統的なチーズ作り体験（フルサイズ）">
+            </div>
         </div>
         <div id="img3" class="lightbox">
-            <a href="#" class="close-btn">&times;</a>
-            <img src="https://api.cloudly.space/resize/clip/1900/1080/75/aHR0cHM6Ly9zdGF0aWMuYXBpZGFlLXRvdXJpc21lLmNvbS9maWxlc3RvcmUvb2JqZXRzLXRvdXJpc3RpcXVlcy9pbWFnZXMvMjUxLzIwMi8yNzE4Mzg2Ny5qcGc=/image.jpg" alt="手作り石けんの販売（フルサイズ）">
+            <a href="#" class="close-btn" onclick="closeLightbox(event)">&times;</a>
+            <div class="lightbox-content">
+                <img src="https://api.cloudly.space/resize/clip/1900/1080/75/aHR0cHM6Ly9zdGF0aWMuYXBpZGFlLXRvdXJpc21lLmNvbS9maWxlc3RvcmUvb2JqZXRzLXRvdXJpc3RpcXVlcy9pbWFnZXMvMjUxLzIwMi8yNzE4Mzg2Ny5qcGc=/image.jpg" alt="手作り石けんの販売（フルサイズ）">
+            </div>
         </div>
 
         <p>訪問先の一例:</p>
@@ -390,10 +403,10 @@
         <!-- Cave Photos -->
         <div class="photo-grid">
             <a href="#img4">
-                <img src="https://i.imgur.com/rzJlocd.jpeg" alt="マ・ダジル洞窟の内部" loading="lazy">
+                <img src="https://i.imgur.com/4gJAEEP.jpeg" alt="マ・ダジル洞窟を流れる川" loading="lazy">
             </a>
             <a href="#img5">
-                <img src="https://i.imgur.com/4gJAEEP.jpeg" alt="マ・ダジル洞窟を流れる川" loading="lazy">
+                <img src="https://i.imgur.com/AI7AOyQ.jpeg" alt="洞窟の古代壁画" loading="lazy">
             </a>
             <a href="#img6">
                 <img src="https://i.imgur.com/sLfOwrj.jpeg" alt="サバラ天文台での星空観測" loading="lazy">
@@ -402,16 +415,22 @@
         
         <!-- Lightboxes for cave photos -->
         <div id="img4" class="lightbox">
-            <a href="#" class="close-btn">&times;</a>
-            <img src="https://i.imgur.com/4gJAEEP.jpeg" alt="マ・ダジル洞窟を流れる川（フルサイズ）">
+            <a href="#" class="close-btn" onclick="closeLightbox(event)">&times;</a>
+            <div class="lightbox-content">
+                <img src="https://i.imgur.com/4gJAEEP.jpeg" alt="マ・ダジル洞窟を流れる川（フルサイズ）">
+            </div>
         </div>
         <div id="img5" class="lightbox">
-            <a href="#" class="close-btn">&times;</a>
-            <img src="https://i.imgur.com/AI7AOyQ.jpeg" alt="洞窟の古代壁画（フルサイズ）">
+            <a href="#" class="close-btn" onclick="closeLightbox(event)">&times;</a>
+            <div class="lightbox-content">
+                <img src="https://i.imgur.com/AI7AOyQ.jpeg" alt="洞窟の古代壁画（フルサイズ）">
+            </div>
         </div>
         <div id="img6" class="lightbox">
-            <a href="#" class="close-btn">&times;</a>
-            <img src="https://i.imgur.com/sLfOwrj.jpeg" alt="サバラ天文台での星空観測（フルサイズ）">
+            <a href="#" class="close-btn" onclick="closeLightbox(event)">&times;</a>
+            <div class="lightbox-content">
+                <img src="https://i.imgur.com/sLfOwrj.jpeg" alt="サバラ天文台での星空観測（フルサイズ）">
+            </div>
         </div>
         
         <ul>
@@ -432,8 +451,10 @@
         
         <!-- Lightbox for Kokopelli photo -->
         <div id="img7" class="lightbox">
-            <a href="#" class="close-btn">&times;</a>
-            <img src="https://i.imgur.com/O4JqWq9.jpeg" alt="ココペリのエコ建築（フルサイズ）">
+            <a href="#" class="close-btn" onclick="closeLightbox(event)">&times;</a>
+            <div class="lightbox-content">
+                <img src="https://i.imgur.com/O4JqWq9.jpeg" alt="ココペリのエコ建築（フルサイズ）">
+            </div>
         </div>
         
         <p><strong>ココペリ協会</strong>は生物多様性保護に取り組む団体で、地元の土とわらで作られたエコ建築の見学ができます。</p>
@@ -464,20 +485,28 @@
         
         <!-- Lightboxes for market photos -->
         <div id="img8" class="lightbox">
-            <a href="#" class="close-btn">&times;</a>
-            <img src="https://i.imgur.com/eaWk5IW.jpeg" alt="活気ある朝市（フルサイズ）">
+            <a href="#" class="close-btn" onclick="closeLightbox(event)">&times;</a>
+            <div class="lightbox-content">
+                <img src="https://i.imgur.com/eaWk5IW.jpeg" alt="活気ある朝市（フルサイズ）">
+            </div>
         </div>
         <div id="img9" class="lightbox">
-            <a href="#" class="close-btn">&times;</a>
-            <img src="https://i.imgur.com/G45vxnV.jpeg" alt="地元農産物のマルシェ（フルサイズ）">
+            <a href="#" class="close-btn" onclick="closeLightbox(event)">&times;</a>
+            <div class="lightbox-content">
+                <img src="https://i.imgur.com/G45vxnV.jpeg" alt="地元農産物のマルシェ（フルサイズ）">
+            </div>
         </div>
         <div id="img10" class="lightbox">
-            <a href="#" class="close-btn">&times;</a>
-            <img src="https://i.imgur.com/eqTk2WJ.jpeg" alt="チーズ専門店（フルサイズ）">
+            <a href="#" class="close-btn" onclick="closeLightbox(event)">&times;</a>
+            <div class="lightbox-content">
+                <img src="https://i.imgur.com/eqTk2WJ.jpeg" alt="チーズ専門店（フルサイズ）">
+            </div>
         </div>
         <div id="img11" class="lightbox">
-            <a href="#" class="close-btn">&times;</a>
-            <img src="https://i.imgur.com/h0OYTyq.jpeg" alt="はちみつスタンド（フルサイズ）">
+            <a href="#" class="close-btn" onclick="closeLightbox(event)">&times;</a>
+            <div class="lightbox-content">
+                <img src="https://i.imgur.com/h0OYTyq.jpeg" alt="はちみつスタンド（フルサイズ）">
+            </div>
         </div>
         
         <p>地元のマルシェ（市場）では:</p>
@@ -514,28 +543,40 @@
         
         <!-- Lightboxes for event photos -->
         <div id="img12" class="lightbox">
-            <a href="#" class="close-btn">&times;</a>
-            <img src="https://i.imgur.com/eA1xzVj.jpeg" alt="カルラ・バイユの美術展（フルサイズ）">
+            <a href="#" class="close-btn" onclick="closeLightbox(event)">&times;</a>
+            <div class="lightbox-content">
+                <img src="https://i.imgur.com/eA1xzVj.jpeg" alt="カルラ・バイユの美術展（フルサイズ）">
+            </div>
         </div>
         <div id="img13" class="lightbox">
-            <a href="#" class="close-btn">&times;</a>
-            <img src="https://i.imgur.com/poKZf7C.jpeg" alt="ギャラリーの絵画展示（フルサイズ）">
+            <a href="#" class="close-btn" onclick="closeLightbox(event)">&times;</a>
+            <div class="lightbox-content">
+                <img src="https://i.imgur.com/poKZf7C.jpeg" alt="ギャラリーの絵画展示（フルサイズ）">
+            </div>
         </div>
         <div id="img14" class="lightbox">
-            <a href="#" class="close-btn">&times;</a>
-            <img src="https://i.imgur.com/1jQw3Ot.jpeg" alt="地元コンサート（フルサイズ）">
+            <a href="#" class="close-btn" onclick="closeLightbox(event)">&times;</a>
+            <div class="lightbox-content">
+                <img src="https://i.imgur.com/1jQw3Ot.jpeg" alt="地元コンサート（フルサイズ）">
+            </div>
         </div>
         <div id="img15" class="lightbox">
-            <a href="#" class="close-btn">&times;</a>
-            <img src="https://i.imgur.com/e7mYllz.jpeg" alt="コンサートでの地元ワイン（フルサイズ）">
+            <a href="#" class="close-btn" onclick="closeLightbox(event)">&times;</a>
+            <div class="lightbox-content">
+                <img src="https://i.imgur.com/e7mYllz.jpeg" alt="コンサートでの地元ワイン（フルサイズ）">
+            </div>
         </div>
         <div id="img16" class="lightbox">
-            <a href="#" class="close-btn">&times;</a>
-            <img src="https://i.imgur.com/pbT57LW.jpeg" alt="ワインとチーズのペアリング（フルサイズ）">
+            <a href="#" class="close-btn" onclick="closeLightbox(event)">&times;</a>
+            <div class="lightbox-content">
+                <img src="https://i.imgur.com/pbT57LW.jpeg" alt="ワインとチーズのペアリング（フルサイズ）">
+            </div>
         </div>
         <div id="img17" class="lightbox">
-            <a href="#" class="close-btn">&times;</a>
-            <img src="https://i.imgur.com/eSebyli.jpeg" alt="イチジク祭り（フルサイズ）">
+            <a href="#" class="close-btn" onclick="closeLightbox(event)">&times;</a>
+            <div class="lightbox-content">
+                <img src="https://i.imgur.com/eSebyli.jpeg" alt="イチジク祭り（フルサイズ）">
+            </div>
         </div>
         
         <p>季節ごとの特別体験:</p>
@@ -683,5 +724,35 @@
             ~ フランスの田舎で、心に残る旅を ~
         </p>
     </div>
+
+    <script>
+        // Store scroll position when opening lightbox
+        let scrollPosition = 0;
+        
+        function closeLightbox(e) {
+            e.preventDefault();
+            history.back();
+        }
+        
+        // Listen to hash changes (lightbox open/close)
+        window.addEventListener('hashchange', function() {
+            if (location.hash.startsWith('#img')) {
+                // Opening lightbox - store position
+                scrollPosition = window.scrollY;
+                document.body.style.overflow = 'hidden';
+            } else {
+                // Closing lightbox - restore position
+                document.body.style.overflow = '';
+                window.scrollTo(0, scrollPosition);
+            }
+        }, false);
+        
+        // Close lightbox when clicking outside image
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('lightbox')) {
+                closeLightbox(e);
+            }
+        });
+    </script>
 </body>
 </html>
