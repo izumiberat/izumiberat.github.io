@@ -726,33 +726,48 @@
     </div>
 
     <script>
-        // Store scroll position when opening lightbox
-        let scrollPosition = 0;
-        
-        function closeLightbox(e) {
-            e.preventDefault();
-            history.back();
+    // Store scroll position when opening lightbox
+    let scrollPosition = 0;
+
+    function closeLightbox(e) {
+        e.preventDefault();
+        history.back();
+    }
+
+    // Listen to hash changes (lightbox open/close)
+    window.addEventListener('hashchange', function() {
+        if (location.hash.startsWith('#img')) {
+            // Opening lightbox - store position
+            scrollPosition = window.scrollY;
+            document.body.style.overflow = 'hidden';
+
+            // Get the target lightbox ID from the hash
+            const lightboxId = location.hash;
+            const lightbox = document.querySelector(lightboxId);
+
+            // Make the lightbox visible
+            if (lightbox) {
+                lightbox.style.display = 'flex';
+            }
+        } else {
+            // Closing lightbox - restore position and hide all lightboxes
+            document.body.style.overflow = '';
+            window.scrollTo(0, scrollPosition);
+
+            // Hide all lightboxes when the hash changes away from an image
+            const lightboxes = document.querySelectorAll('.lightbox');
+            lightboxes.forEach(lightbox => {
+                lightbox.style.display = 'none';
+            });
         }
-        
-        // Listen to hash changes (lightbox open/close)
-        window.addEventListener('hashchange', function() {
-            if (location.hash.startsWith('#img')) {
-                // Opening lightbox - store position
-                scrollPosition = window.scrollY;
-                document.body.style.overflow = 'hidden';
-            } else {
-                // Closing lightbox - restore position
-                document.body.style.overflow = '';
-                window.scrollTo(0, scrollPosition);
-            }
-        }, false);
-        
-        // Close lightbox when clicking outside image
-        document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('lightbox')) {
-                closeLightbox(e);
-            }
-        });
+    }, false);
+
+    // Close lightbox when clicking outside image
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('lightbox')) {
+            closeLightbox(e);
+        }
+    });
     </script>
 </body>
 </html>
