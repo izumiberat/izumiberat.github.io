@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アリエージュ農場体験ツアー - フランス田舎の本物体験</title>
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #5a3921;
+            --secondary-color: #d4b483;
+            --background-color: #fff9f5;
+            --highlight-color: #f8f1e9;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic Pro', Meiryo, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: var(--background-color);
+            padding: 15px;
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4 {
+            color: var(--primary-color);
+            margin: 20px 0 15px;
+        }
+        
+        h1 {
+            font-size: 1.8rem;
+            text-align: center;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+        
+        h2 {
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 8px;
+        }
+        
+        h3 {
+            font-size: 1.3rem;
+        }
+        
+        h4 {
+            font-size: 1.1rem;
+        }
+        
+        p, li {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        
+        /* Layout */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 10px;
+        }
+        
+        /* Components */
+        .highlight-box {
+            background-color: var(--highlight-color);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .whatsapp-btn, .email-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 10px 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white !important;
+        }
+        
+        .email-btn {
+            background-color: var(--primary-color);
+            color: white !important;
+        }
+        
+        .whatsapp-btn:hover, .email-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .btn-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 25px 0;
+        }
+        
+        /* Images */
+        .hero-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin: 15px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 1px solid rgba(0,0,0,0.08);
+        }
+        
+        .host-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--secondary-color);
+            margin: 20px auto;
+            display: block;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+        
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .photo-grid img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .photo-grid img:hover {
+            transform: scale(1.03);
+        }
+        
+        /* Cards */
+        .accommodation-card {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            border: 1px solid #eee;
+        }
+        
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        th {
+            background-color: var(--highlight-color);
+            padding: 12px;
+            text-align: left;
+        }
+        
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e0d5c8;
+        }
+        
+        .price {
+            text-align: right;
+            font-weight: bold;
+        }
+        
+        /* Dividers */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--secondary-color), transparent);
+            margin: 30px 0;
+        }
+        
+        /* Lists */
+        ul, ol {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        /* Emoji */
+        .emoji {
+            font-size: 1.2em;
+            margin-right: 5px;
+        }
+        
+        /* Footer */
+        .footer-note {
+            text-align: center;
+            font-style: italic;
+            color: #7a6a5f;
+            margin-top: 40px;
+            padding: 20px 0;
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            h2 {
+                font-size: 1.3rem;
+            }
+            
+            .photo-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .photo-grid img {
+                height: 200px;
+            }
+            
+            .btn-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .whatsapp-btn, .email-btn {
+                width: 100%;
+                max-width: 300px;
+                margin: 5px 0;
+            }
+            
+            table {
+                font-size: 0.9rem;
+            }
+            
+            th, td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>アリエージュ農場体験ツアー<br>
+        <span style="font-size: 0.7em; font-weight: normal;">~観光客のいないフランス田舎へ~</span></h1>
+
+        <!-- Hero Image - Pyrenees -->
+        <img src="https://i.imgur.com/rnRGkvP.jpeg" 
+             alt="ピレネー山脈の壮大な景色" 
+             class="hero-image" 
+             loading="eager">
+
+        <div class="btn-container">
+            <a href="https://wa.me/33784529922" class="whatsapp-btn">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="20" style="vertical-align: middle;"> WhatsAppで問い合わせ
+            </a>
+            <a href="mailto:izumib@gmail.com" class="email-btn">
+                ✉️ メールで予約
+            </a>
+        </div>
+
+        <div class="highlight-box">
+            <p><strong>都会の喧騒を離れ、フランス田舎の本当の魅力を発見しませんか？</strong></p>
+            <p>アリエージュで体験できること:</p>
+            <ul>
+                <li>農場直送のチーズ・はちみつ試食</li>
+                <li>手作りワークショップ（チーズ・石けん作り）</li>
+                <li>やぎ・羊との触れ合い</li>
+                <li>先史時代の洞窟探検</li>
+                <li>芸術村散策</li>
+            </ul>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <h2><span class="emoji">🏡</span> 農場＆ワークショップ</h2>
+        
+        <!-- Farm Experience Photo Grid -->
+        <div class="photo-grid">
+            <img src="https://api.cloudly.space/resize/clip/1900/1080/75/aHR0cHM6Ly9zdGF0aWMuYXBpZGFlLXRvdXJpc21lLmNvbS9maWxlc3RvcmUvb2JqZXRzLXRvdXJpc3RpcXVlcy9pbWFnZXMvMTcyLzIwMi8yNzE4Mzc4OC5qcGc=/image.jpg" 
+                 alt="農場の動物たちとのふれあい" 
+                 loading="lazy">
+            <img src="https://api.cloudly.space/resize/clip/1900/1080/75/aHR0cHM6Ly9zdGF0aWMuYXBpZGFlLXRvdXJpc21lLmNvbS9maWxlc3RvcmUvb2JqZXRzLXRvdXJpc3RpcXVlcy9pbWFnZXMvMzIvMjU0LzIwMTg0NjA4LmpwZw==/image.jpg" 
+                 alt="伝統的なチーズ作り体験" 
+                 loading="lazy">
+            <img src="https://api.cloudly.space/resize/clip/1900/1080/75/aHR0cHM6Ly9zdGF0aWMuYXBpZGFlLXRvdXJpc21lLmNvbS9maWxlc3RvcmUvb2JqZXRzLXRvdXJpc3RpcXVlcy9pbWFnZXMvMjUxLzIwMi8yNzE4Mzg2Ny5qcGc=/image.jpg" 
+                 alt="手作り石けんの販売" 
+                 loading="lazy">
+        </div>
+
+        <p>訪問先の一例:</p>
+        <ul>
+            <li><strong>フロマージュリー</strong>：伝統チーズ作り体験</li>
+            <li><strong>ピレネー石けん工房</strong>：天然素材の石けん作り</li>
+            <li><strong>地元養蜂家</strong>：はちみつテイスティング</li>
+        </ul>
+
+        <div class="section-divider"></div>
+
+        <h2><span class="emoji">⛰️</span> 隠れた名所</h2>
+        <ul>
+            <li><strong>マ・ダジル洞窟</strong>：1万5千年前の人類の住居跡が見られる川底洞窟</li>
+            <li><strong>カルラ・バイユ</strong>：ピレネー山脈を望む芸術家村</li>
+            <li>ひまわり畑・ブドウ畑・森林散策</li>
+        </ul>
+
+        <div class="section-divider"></div>
+
+        <h2><span class="emoji">👨‍👩‍👧‍👦</span> 少人数制の魅力</h2>
+        
+        <!-- Animal Photos -->
+        <div class="photo-grid">
+            <img src="https://api.cloudly.space/resize/clip/1900/1080/75/aHR0cHM6Ly9zdGF0aWMuYXBpZGFlLXRvdXJpc21lLmNvbS9maWxlc3RvcmUvb2JqZXRzLXRvdXJpc3RpcXVlcy9pbWFnZXMvMTcvMjAyLzI3MTgzNjMzLmpwZw==/image.jpg" 
+                 alt="やぎとのふれあい体験" 
+                 loading="lazy">
+            <img src="https://api.cloudly.space/resize/clip/1900/1080/75/aHR0cHM6Ly9zdGF0aWMuYXBpZGFlLXRvdXJpc21lLmNvbS9maWxlc3RvcmUvb2JqZXRzLXRvdXJpc3RpcXVlcy9pbWFnZXMvNTAvMjAzLzI3MTgzOTIyLmpwZw==/image.jpg" 
+                 alt="農場の動物たち" 
+                 loading="lazy">
+            <img src="https://api.cloudly.space/resize/clip/1900/1080/75/aHR0cHM6Ly9zdGF0aWMuYXBpZGFlLXRvdXJpc21lLmNvbS9maWxlc3RvcmUvb2JqZXRzLXRvdXJpc3RpcXVlcy9pbWFnZXMvMjAvMjAyLzI3MTgzNjM2LmpwZw==/image.jpg" 
+                 alt="農場の新鮮な野菜" 
+                 loading="lazy">
+        </div>
+
+        <p>1回のツアーは最大6名様まで:</p>
+        <ul>
+            <li>アットホームな対応</li>
+            <li>環境に優しい旅行</li>
+            <li>地元の人々との交流時間</li>
+        </ul>
+
+        <div class="section-divider"></div>
+
+        <h2><span class="emoji">🛌</span> 宿泊施設</h2>
+        
+        <div class="accommodation-card">
+            <h3>1. 農家ゲストハウス</h3>
+            <p>1泊 ¥13,000〜¥19,000（朝食込）</p>
+            <ul>
+                <li>共同キッチン（地元食材提供）</li>
+                <li>ピレネー山脈の眺め</li>
+                <li>夕食オプション: +¥4,000/人</li>
+            </ul>
+        </div>
+
+        <div class="accommodation-card">
+            <h3>2. セルフケータリングコテージ</h3>
+            <p>1泊 ¥16,000〜¥24,000（2-4名様用）</p>
+            <ul>
+                <li>完全装備のキッチン</li>
+                <li>パン屋・工房まで徒歩圏内</li>
+                <li>無料駐車場+ウェルカムバスケット</li>
+            </ul>
+        </div>
+
+        <div class="accommodation-card">
+            <h3>3. プレミアムオプション</h3>
+            <p>1泊 ¥32,000〜</p>
+            <ul>
+                <li>歴史的マナーハウスまたはエコロッジ</li>
+                <li>プライベートプール付き</li>
+            </ul>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <h2><span class="emoji">💰</span> 料金プラン</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>プラン</th>
+                    <th>時間</th>
+                    <th>内容</th>
+                    <th class="price">料金/人</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>半日ツアー</strong></td>
+                    <td>3-4時間</td>
+                    <td>農場見学+チーズ試食</td>
+                    <td class="price">¥12,000〜¥15,000</td>
+                </tr>
+                <tr>
+                    <td><strong>1日ツアー</strong></td>
+                    <td>6-8時間</td>
+                    <td>昼食+洞窟または芸術村訪問</td>
+                    <td class="price">¥24,000〜¥29,000</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>宿泊プラン（人気！）</h3>
+        <div class="accommodation-card">
+            <h4>「アリエージュ味めぐり」2日1泊</h4>
+            <p class="price">¥56,000/人</p>
+            <ul>
+                <li>農家宿泊1泊（朝食込）</li>
+                <li>ワークショップ2回+夕食</li>
+                <li>カルラ・バイユ村訪問</li>
+            </ul>
+        </div>
+
+        <div class="accommodation-card">
+            <h4>「洞窟と文化」3日2泊</h4>
+            <p class="price">¥96,000/人</p>
+            <ul>
+                <li>コテージ宿泊2泊</li>
+                <li>洞窟見学+ワークショップ3回</li>
+                <li>ピクニック昼食付き</li>
+            </ul>
+        </div>
+
+        <div class="highlight-box">
+            <p><strong>✨ オプション</strong></p>
+            <ul>
+                <li>布団セット: +¥2,400/泊（要予約）</li>
+                <li>12歳以下: アクティビティ料金50%OFF（宿泊料金除く）</li>
+                <li>トゥールーズ空駅送迎: +¥8,000/日</li>
+            </ul>
+            <p><em>※料金には消費税と24時間現地サポートが含まれます</em></p>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <h2><span class="emoji">✨</span> ガイド紹介</h2>
+        
+        <!-- Your Personal Photo -->
+        <img src="https://i.imgur.com/Gi3ashM.jpeg" 
+             alt="ガイドの泉" 
+             class="host-photo" 
+             loading="lazy">
+        
+        <p>
+            日仏ハーフの泉です。東京（町田市鶴川）とトゥールーズで育ち、フランス、オランダ、日本、イギリス、ニュージーランド、アメリカ（ニューヨーク）、ドイツで生活した後、インドとネパールをバックパッキングで旅し、現在は家族とともにアリエージュで暮らしています。日本語・フランス語・英語で、地元の人々との交流をお手伝いします。
+        </p>
+
+        <div class="section-divider"></div>
+
+        <h2><span class="emoji">📩</span> 予約方法</h2>
+        <div class="btn-container">
+            <a href="https://wa.me/33784529922" class="whatsapp-btn">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="20" style="vertical-align: middle;"> +33 7 84 52 99 22
+            </a>
+            <a href="mailto:izumib@gmail.com" class="email-btn">
+                ✉️ izumib@gmail.com
+            </a>
+        </div>
+
+        <p class="footer-note">
+            ~ フランスの田舎で、心に残る旅を ~
+        </p>
+    </div>
+</body>
+</html>
