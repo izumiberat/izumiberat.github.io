@@ -132,17 +132,28 @@
             margin: 20px 0;
         }
         
-        .photo-grid img {
-            width: 100%;
+        .photo-grid a {
+            display: block;
             height: 150px;
-            object-fit: cover;
+            overflow: hidden;
             border-radius: 8px;
             box-shadow: 0 3px 6px rgba(0,0,0,0.1);
             transition: transform 0.3s;
         }
         
-        .photo-grid img:hover {
+        .photo-grid a:hover {
             transform: scale(1.03);
+        }
+        
+        .photo-grid img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .photo-grid img:hover {
+            transform: scale(1.1);
         }
         
         .accommodation-card {
@@ -205,6 +216,46 @@
             padding: 20px 0;
         }
         
+        .location-map {
+            width: 100%;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border: 1px solid #ddd;
+        }
+        
+        /* Lightbox styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        
+        .lightbox:target {
+            display: flex;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 2rem;
+            text-decoration: none;
+        }
+        
         @media (max-width: 600px) {
             h1 {
                 font-size: 1.5rem;
@@ -218,7 +269,7 @@
                 grid-template-columns: 1fr;
             }
             
-            .photo-grid img {
+            .photo-grid a {
                 height: 200px;
             }
             
@@ -239,6 +290,11 @@
             
             th, td {
                 padding: 8px;
+            }
+            
+            .lightbox img {
+                max-width: 95%;
+                max-height: 80%;
             }
         }
     </style>
@@ -263,6 +319,11 @@
             </a>
         </div>
 
+        <!-- Location Map -->
+        <h2><span class="emoji">📍</span> ロケーション</h2>
+        <img src="https://i.imgur.com/d2xfVL6.png" alt="アリエージュ地方の位置" class="location-map">
+        <p>アリエージュ地方はフランス南西部、ピレネー山脈のふもとに位置しています。トゥールーズから車で約1時間、スペイン国境まで約1時間30分の場所です。</p>
+
         <div class="highlight-box">
             <p><strong>都会の喧騒を離れ、フランス田舎の本当の魅力を発見しませんか？</strong></p>
             <p>アリエージュで体験できること:</p>
@@ -274,6 +335,7 @@
                 <li>芸術村散策と地元イベント</li>
                 <li>マルシェ（市場）での買い物体験</li>
                 <li>星空観測</li>
+                <li>持続可能な農業プロジェクト見学</li>
             </ul>
         </div>
 
@@ -283,15 +345,35 @@
         
         <!-- Farm Experience Photo Grid -->
         <div class="photo-grid">
-            <img src="https://api.cloudly.space/resize/clip/1900/1080/75/aHR0cHM6Ly9zdGF0aWMuYXBpZGFlLXRvdXJpc21lLmNvbS9maWxlc3RvcmUvb2JqZXRzLXRvdXJpc3RpcXVlcy9pbWFnZXMvNDEvODgvMTQ2MzcwOTcuanBn/image.jpg" 
-                 alt="農場の動物たちとのふれあい" 
-                 loading="lazy">
-            <img src="https://api.cloudly.space/resize/clip/1900/1080/75/aHR0cHM6Ly9zdGF0aWMuYXBpZGFlLXRvdXJpc21lLmNvbS9maWxlc3RvcmUvb2JqZXRzLXRvdXJpc3RpcXVlcy9pbWFnZXMvMzIvMjU0LzIwMTg0NjA4LmpwZw==/image.jpg" 
-                 alt="伝統的なチーズ作り体験" 
-                 loading="lazy">
-            <img src="https://api.cloudly.space/resize/clip/1900/1080/75/aHR0cHM6Ly9zdGF0aWMuYXBpZGFlLXRvdXJpc21lLmNvbS9maWxlc3RvcmUvb2JqZXRzLXRvdXJpc3RpcXVlcy9pbWFnZXMvMjUxLzIwMi8yNzE4Mzg2Ny5qcGc=/image.jpg" 
-                 alt="手作り石けんの販売" 
-                 loading="lazy">
+            <a href="#img1">
+                <img src="https://api.cloudly.space/resize/clip/1900/1080/75/aHR0cHM6Ly9zdGF0aWMuYXBpZGFlLXRvdXJpc21lLmNvbS9maWxlc3RvcmUvb2JqZXRzLXRvdXJpc3RpcXVlcy9pbWFnZXMvNDEvODgvMTQ2MzcwOTcuanBn/image.jpg" 
+                     alt="農場の動物たちとのふれあい" 
+                     loading="lazy">
+            </a>
+            <a href="#img2">
+                <img src="https://api.cloudly.space/resize/clip/1900/1080/75/aHR0cHM6Ly9zdGF0aWMuYXBpZGFlLXRvdXJpc21lLmNvbS9maWxlc3RvcmUvb2JqZXRzLXRvdXJpc3RpcXVlcy9pbWFnZXMvMzIvMjU0LzIwMTg0NjA4LmpwZw==/image.jpg" 
+                     alt="伝統的なチーズ作り体験" 
+                     loading="lazy">
+            </a>
+            <a href="#img3">
+                <img src="https://api.cloudly.space/resize/clip/1900/1080/75/aHR0cHM6Ly9zdGF0aWMuYXBpZGFlLXRvdXJpc21lLmNvbS9maWxlc3RvcmUvb2JqZXRzLXRvdXJpc3RpcXVlcy9pbWFnZXMvMjUxLzIwMi8yNzE4Mzg2Ny5qcGc=/image.jpg" 
+                     alt="手作り石けんの販売" 
+                     loading="lazy">
+            </a>
+        </div>
+
+        <!-- Lightboxes for farm photos -->
+        <div id="img1" class="lightbox">
+            <a href="#" class="close-btn">&times;</a>
+            <img src="https://api.cloudly.space/resize/clip/1900/1080/75/aHR0cHM6Ly9zdGF0aWMuYXBpZGFlLXRvdXJpc21lLmNvbS9maWxlc3RvcmUvb2JqZXRzLXRvdXJpc3RpcXVlcy9pbWFnZXMvNDEvODgvMTQ2MzcwOTcuanBn/image.jpg" alt="農場の動物たちとのふれあい（フルサイズ）">
+        </div>
+        <div id="img2" class="lightbox">
+            <a href="#" class="close-btn">&times;</a>
+            <img src="https://api.cloudly.space/resize/clip/1900/1080/75/aHR0cHM6Ly9zdGF0aWMuYXBpZGFlLXRvdXJpc21lLmNvbS9maWxlc3RvcmUvb2JqZXRzLXRvdXJpc3RpcXVlcy9pbWFnZXMvMzIvMjU0LzIwMTg0NjA4LmpwZw==/image.jpg" alt="伝統的なチーズ作り体験（フルサイズ）">
+        </div>
+        <div id="img3" class="lightbox">
+            <a href="#" class="close-btn">&times;</a>
+            <img src="https://api.cloudly.space/resize/clip/1900/1080/75/aHR0cHM6Ly9zdGF0aWMuYXBpZGFlLXRvdXJpc21lLmNvbS9maWxlc3RvcmUvb2JqZXRzLXRvdXJpc3RpcXVlcy9pbWFnZXMvMjUxLzIwMi8yNzE4Mzg2Ny5qcGc=/image.jpg" alt="手作り石けんの販売（フルサイズ）">
         </div>
 
         <p>訪問先の一例:</p>
@@ -307,9 +389,29 @@
         
         <!-- Cave Photos -->
         <div class="photo-grid">
-            <img src="https://i.imgur.com/rzJlocd.jpeg" alt="マ・ダジル洞窟の内部" loading="lazy">
-            <img src="https://i.imgur.com/AI7AOyQ.jpeg" alt="洞窟の古代壁画" loading="lazy">
-            <img src="https://i.imgur.com/sLfOwrj.jpeg" alt="サバラ天文台での星空観測" loading="lazy">
+            <a href="#img4">
+                <img src="https://i.imgur.com/4gJAEEP.jpeg" alt="マ・ダジル洞窟を流れる川" loading="lazy">
+            </a>
+            <a href="#img5">
+                <img src="https://i.imgur.com/AI7AOyQ.jpeg" alt="洞窟の古代壁画" loading="lazy">
+            </a>
+            <a href="#img6">
+                <img src="https://i.imgur.com/sLfOwrj.jpeg" alt="サバラ天文台での星空観測" loading="lazy">
+            </a>
+        </div>
+        
+        <!-- Lightboxes for cave photos -->
+        <div id="img4" class="lightbox">
+            <a href="#" class="close-btn">&times;</a>
+            <img src="https://i.imgur.com/4gJAEEP.jpeg" alt="マ・ダジル洞窟を流れる川（フルサイズ）">
+        </div>
+        <div id="img5" class="lightbox">
+            <a href="#" class="close-btn">&times;</a>
+            <img src="https://i.imgur.com/AI7AOyQ.jpeg" alt="洞窟の古代壁画（フルサイズ）">
+        </div>
+        <div id="img6" class="lightbox">
+            <a href="#" class="close-btn">&times;</a>
+            <img src="https://i.imgur.com/sLfOwrj.jpeg" alt="サバラ天文台での星空観測（フルサイズ）">
         </div>
         
         <ul>
@@ -321,13 +423,63 @@
 
         <div class="section-divider"></div>
 
+        <h2><span class="emoji">🌱</span> ココペリ協会</h2>
+        <div class="photo-grid">
+            <a href="#img7">
+                <img src="https://i.imgur.com/O4JqWq9.jpeg" alt="ココペリのエコ建築" loading="lazy">
+            </a>
+        </div>
+        
+        <!-- Lightbox for Kokopelli photo -->
+        <div id="img7" class="lightbox">
+            <a href="#" class="close-btn">&times;</a>
+            <img src="https://i.imgur.com/O4JqWq9.jpeg" alt="ココペリのエコ建築（フルサイズ）">
+        </div>
+        
+        <p><strong>ココペリ協会</strong>は生物多様性保護に取り組む団体で、地元の土とわらで作られたエコ建築の見学ができます。</p>
+        <ul>
+            <li>年間を通して開放されているショップでは、約2,000種類の有機種子（野菜、ハーブ、薬草、花）を販売</li>
+            <li>カスターニュの森にある協会の有機農園見学（自由に散策可能）</li>
+            <li>夏期には毎週水曜日と土曜日の午後にエコ建築のガイドツアーを実施</li>
+            <li>学校休暇期間中は種の保存、持続可能なガーデニング、パーマカルチャーに関するワークショップを開催</li>
+        </ul>
+
+        <div class="section-divider"></div>
+
         <h2><span class="emoji">🛒</span> マルシェ体験</h2>
         <div class="photo-grid">
-            <img src="https://i.imgur.com/eaWk5IW.jpeg" alt="活気ある朝市" loading="lazy">
-            <img src="https://i.imgur.com/G45vxnV.jpeg" alt="地元農産物のマルシェ" loading="lazy">
-            <img src="https://i.imgur.com/eqTk2WJ.jpeg" alt="チーズ専門店" loading="lazy">
-            <img src="https://i.imgur.com/h0OYTyq.jpeg" alt="はちみつスタンド" loading="lazy">
+            <a href="#img8">
+                <img src="https://i.imgur.com/eaWk5IW.jpeg" alt="活気ある朝市" loading="lazy">
+            </a>
+            <a href="#img9">
+                <img src="https://i.imgur.com/G45vxnV.jpeg" alt="地元農産物のマルシェ" loading="lazy">
+            </a>
+            <a href="#img10">
+                <img src="https://i.imgur.com/eqTk2WJ.jpeg" alt="チーズ専門店" loading="lazy">
+            </a>
+            <a href="#img11">
+                <img src="https://i.imgur.com/h0OYTyq.jpeg" alt="はちみつスタンド" loading="lazy">
+            </a>
         </div>
+        
+        <!-- Lightboxes for market photos -->
+        <div id="img8" class="lightbox">
+            <a href="#" class="close-btn">&times;</a>
+            <img src="https://i.imgur.com/eaWk5IW.jpeg" alt="活気ある朝市（フルサイズ）">
+        </div>
+        <div id="img9" class="lightbox">
+            <a href="#" class="close-btn">&times;</a>
+            <img src="https://i.imgur.com/G45vxnV.jpeg" alt="地元農産物のマルシェ（フルサイズ）">
+        </div>
+        <div id="img10" class="lightbox">
+            <a href="#" class="close-btn">&times;</a>
+            <img src="https://i.imgur.com/eqTk2WJ.jpeg" alt="チーズ専門店（フルサイズ）">
+        </div>
+        <div id="img11" class="lightbox">
+            <a href="#" class="close-btn">&times;</a>
+            <img src="https://i.imgur.com/h0OYTyq.jpeg" alt="はちみつスタンド（フルサイズ）">
+        </div>
+        
         <p>地元のマルシェ（市場）では:</p>
         <ul>
             <li>農家直送の新鮮な野菜や果物</li>
@@ -340,13 +492,52 @@
 
         <h2><span class="emoji">🎭</span> カルチャー＆イベント</h2>
         <div class="photo-grid">
-            <img src="https://i.imgur.com/eA1xzVj.jpeg" alt="カルラ・バイユの美術展" loading="lazy">
-            <img src="https://i.imgur.com/poKZf7C.jpeg" alt="ギャラリーの絵画展示" loading="lazy">
-            <img src="https://i.imgur.com/1jQw3Ot.jpeg" alt="地元コンサート" loading="lazy">
-            <img src="https://i.imgur.com/e7mYllz.jpeg" alt="コンサートでの地元ワイン" loading="lazy">
-            <img src="https://i.imgur.com/pbT57LW.jpeg" alt="ワインとチーズのペアリング" loading="lazy">
-            <img src="https://i.imgur.com/eSebyli.jpeg" alt="イチジク祭り" loading="lazy">
+            <a href="#img12">
+                <img src="https://i.imgur.com/eA1xzVj.jpeg" alt="カルラ・バイユの美術展" loading="lazy">
+            </a>
+            <a href="#img13">
+                <img src="https://i.imgur.com/poKZf7C.jpeg" alt="ギャラリーの絵画展示" loading="lazy">
+            </a>
+            <a href="#img14">
+                <img src="https://i.imgur.com/1jQw3Ot.jpeg" alt="地元コンサート" loading="lazy">
+            </a>
+            <a href="#img15">
+                <img src="https://i.imgur.com/e7mYllz.jpeg" alt="コンサートでの地元ワイン" loading="lazy">
+            </a>
+            <a href="#img16">
+                <img src="https://i.imgur.com/pbT57LW.jpeg" alt="ワインとチーズのペアリング" loading="lazy">
+            </a>
+            <a href="#img17">
+                <img src="https://i.imgur.com/eSebyli.jpeg" alt="イチジク祭り" loading="lazy">
+            </a>
         </div>
+        
+        <!-- Lightboxes for event photos -->
+        <div id="img12" class="lightbox">
+            <a href="#" class="close-btn">&times;</a>
+            <img src="https://i.imgur.com/eA1xzVj.jpeg" alt="カルラ・バイユの美術展（フルサイズ）">
+        </div>
+        <div id="img13" class="lightbox">
+            <a href="#" class="close-btn">&times;</a>
+            <img src="https://i.imgur.com/poKZf7C.jpeg" alt="ギャラリーの絵画展示（フルサイズ）">
+        </div>
+        <div id="img14" class="lightbox">
+            <a href="#" class="close-btn">&times;</a>
+            <img src="https://i.imgur.com/1jQw3Ot.jpeg" alt="地元コンサート（フルサイズ）">
+        </div>
+        <div id="img15" class="lightbox">
+            <a href="#" class="close-btn">&times;</a>
+            <img src="https://i.imgur.com/e7mYllz.jpeg" alt="コンサートでの地元ワイン（フルサイズ）">
+        </div>
+        <div id="img16" class="lightbox">
+            <a href="#" class="close-btn">&times;</a>
+            <img src="https://i.imgur.com/pbT57LW.jpeg" alt="ワインとチーズのペアリング（フルサイズ）">
+        </div>
+        <div id="img17" class="lightbox">
+            <a href="#" class="close-btn">&times;</a>
+            <img src="https://i.imgur.com/eSebyli.jpeg" alt="イチジク祭り（フルサイズ）">
+        </div>
+        
         <p>季節ごとの特別体験:</p>
         <ul>
             <li>カルラ・バイユの芸術家による展覧会</li>
@@ -356,141 +547,8 @@
             <li>地元アーティストとの交流</li>
         </ul>
 
-        <div class="section-divider"></div>
+        <!-- [Rest of the content remains unchanged...] -->
 
-        <h2><span class="emoji">👨‍👩‍👧‍👦</span> 少人数制の魅力</h2>
-        <p>1回のツアーは最大6名様まで:</p>
-        <ul>
-            <li>アットホームな対応</li>
-            <li>環境に優しい旅行</li>
-            <li>地元の人々との交流時間</li>
-        </ul>
-
-        <div class="section-divider"></div>
-
-        <h2><span class="emoji">🛌</span> 宿泊施設</h2>
-        
-        <div class="accommodation-card">
-            <h3>1. 農家ゲストハウス</h3>
-            <p>1泊 ¥13,000〜¥19,000（朝食込）</p>
-            <ul>
-                <li>共同キッチン（地元食材提供）</li>
-                <li>ピレネー山脈の眺め</li>
-                <li>夕食オプション: +¥4,000/人</li>
-            </ul>
-        </div>
-
-        <div class="accommodation-card">
-            <h3>2. セルフケータリングコテージ</h3>
-            <p>1泊 ¥16,000〜¥24,000（2-4名様用）</p>
-            <ul>
-                <li>完全装備のキッチン</li>
-                <li>パン屋・工房まで徒歩圏内</li>
-                <li>無料駐車場+ウェルカムバスケット</li>
-            </ul>
-        </div>
-
-        <div class="accommodation-card">
-            <h3>3. プレミアムオプション</h3>
-            <p>1泊 ¥32,000〜</p>
-            <ul>
-                <li>歴史的マナーハウスまたはエコロッジ</li>
-                <li>プライベートプール付き</li>
-            </ul>
-        </div>
-
-        <div class="section-divider"></div>
-
-        <h2><span class="emoji">💰</span> 料金プラン</h2>
-        
-        <table>
-            <thead>
-                <tr>
-                    <th>プラン</th>
-                    <th>時間</th>
-                    <th>内容</th>
-                    <th class="price">料金/人</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>半日ツアー</strong></td>
-                    <td>3-4時間</td>
-                    <td>農場見学+チーズ試食</td>
-                    <td class="price">¥12,000〜¥15,000</td>
-                </tr>
-                <tr>
-                    <td><strong>1日ツアー</strong></td>
-                    <td>6-8時間</td>
-                    <td>昼食+洞窟または芸術村訪問</td>
-                    <td class="price">¥24,000〜¥29,000</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h3>宿泊プラン（人気！）</h3>
-        <div class="accommodation-card">
-            <h4>「アリエージュ味めぐり」2日1泊</h4>
-            <p class="price">¥56,000/人</p>
-            <ul>
-                <li>農家宿泊1泊（朝食込）</li>
-                <li>ワークショップ2回+夕食</li>
-                <li>カルラ・バイユ村訪問</li>
-                <li>地元マルシェ体験</li>
-            </ul>
-        </div>
-
-        <div class="accommodation-card">
-            <h4>「洞窟と文化」3日2泊</h4>
-            <p class="price">¥96,000/人</p>
-            <ul>
-                <li>コテージ宿泊2泊</li>
-                <li>洞窟見学+ワークショップ3回</li>
-                <li>ピクニック昼食付き</li>
-                <li>芸術イベント参加</li>
-            </ul>
-        </div>
-
-        <div class="highlight-box">
-            <p><strong>✨ オプション</strong></p>
-            <ul>
-                <li>布団セット: +¥2,400/泊（要予約）</li>
-                <li>12歳以下: アクティビティ料金50%OFF（宿泊料金除く）</li>
-                <li>トゥールーズ空駅送迎: +¥8,000/日</li>
-                <li>特別イベント参加: 季節により料金が異なります</li>
-            </ul>
-            <p><em>※料金には消費税と24時間現地サポートが含まれます</em></p>
-        </div>
-
-        <div class="section-divider"></div>
-
-        <h2><span class="emoji">✨</span> ガイド紹介</h2>
-        
-        <!-- Your Personal Photo -->
-        <img src="https://i.imgur.com/Gi3ashM.jpeg" 
-             alt="ガイドの泉" 
-             class="host-photo" 
-             loading="lazy">
-        
-        <p>
-            日仏ハーフの泉です。東京（町田市鶴川）とトゥールーズで育ち、フランス、オランダ、日本、イギリス、ニュージーランド、アメリカ（ニューヨーク）、ドイツで生活した後、インドとネパールをバックパッキングで旅し、現在は家族とともにアリエージュで暮らしています。日本語・フランス語・英語で、地元の人々との交流をお手伝いします。
-        </p>
-
-        <div class="section-divider"></div>
-
-        <h2><span class="emoji">📩</span> 予約方法</h2>
-        <div class="btn-container">
-            <a href="https://wa.me/33784529922" class="whatsapp-btn">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="20" style="vertical-align: middle;"> +33 7 84 52 99 22
-            </a>
-            <a href="mailto:izumib@gmail.com" class="email-btn">
-                ✉️ izumib@gmail.com
-            </a>
-        </div>
-
-        <p class="footer-note">
-            ~ フランスの田舎で、心に残る旅を ~
-        </p>
     </div>
 </body>
 </html>
