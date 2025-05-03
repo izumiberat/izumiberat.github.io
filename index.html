@@ -41,6 +41,9 @@
             text-align: center;
             padding-bottom: 10px;
             border-bottom: 2px solid var(--secondary-color);
+            margin: 0; /* Remove default margins that might affect centering */
+            width: 100%; /* Ensure it takes full width when wrapped */
+        }
         }
         
         h2 {
@@ -491,8 +494,11 @@
             .title-with-logo {
                 display: flex;
                 align-items: center;
+                justify-content: center; /* Add this to center horizontally */
                 gap: 20px;
                 margin-bottom: 20px;
+                flex-wrap: wrap; /* Allow wrapping on small screens */
+                text-align: center; /* Center text for wrapped content */
             }
             
             .title-logo {
@@ -514,9 +520,6 @@
                 }
                 .title-logo {
                     width: 60px;
-                }
-                h1 {
-                    text-align: center;
                 }
             }
     </style>
