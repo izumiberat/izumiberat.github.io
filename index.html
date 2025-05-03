@@ -364,6 +364,146 @@
             color: var(--primary-color);
             text-decoration: none;
         }
+
+        /* ======================
+           FLIGHT INFORMATION SECTION 
+           ====================== */
+        .flight-info {
+            margin: 30px 0;
+        }
+        
+        .flight-info .flight-icon {
+            text-align: center;
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+        
+        .flight-info .price-summary {
+            padding-left: 20px;
+        }
+        
+        .flight-info .price-summary li {
+            margin-bottom: 8px;
+        }
+        
+        /* Price Comparison */
+        .flight-info .price-comparison {
+            background: var(--highlight-color);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .flight-info .airline-scroller {
+            display: flex;
+            overflow-x: auto;
+            padding: 10px 5px;
+            gap: 15px;
+            scrollbar-width: thin;
+        }
+        
+        .flight-info .airline-card {
+            min-width: 100px;
+            text-align: center;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+        }
+        
+        .flight-info .airline-logo {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 10px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .flight-info .airline-logo.af { background-color: #00256C; }
+        .flight-info .airline-logo.lh { background-color: #D1E6E0; color: #333; }
+        .flight-info .airline-logo.qr { background-color: #60000A; }
+        
+        /* Seasonal Prices */
+        .flight-info .seasonal-prices {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin: 15px 0;
+        }
+        
+        .flight-info .month-tag {
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .flight-info .month-tag span {
+            display: block;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+        
+        .flight-info .month-tag strong {
+            font-size: 1.1em;
+            display: block;
+        }
+        
+        .flight-info .month-tag small {
+            display: block;
+            font-size: 0.7em;
+            color: var(--primary-color);
+            margin-top: 3px;
+        }
+        
+        .flight-info .winter { background-color: #f0e6d6; }
+        .flight-info .spring { background-color: #e6d9c2; }
+        .flight-info .summer { background-color: var(--secondary-color); }
+        .flight-info .autumn { background-color: #e6d9c2; }
+        
+        .flight-info .price-disclaimer {
+            font-size: 0.85em;
+            text-align: center;
+            color: #666;
+            margin-top: 10px;
+        }
+        
+        /* Booking Tips */
+        .flight-info .booking-tips {
+            background: #f9f5f0;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary-color);
+        }
+        
+        .flight-info .tips-list {
+            padding-left: 20px;
+        }
+        
+        .flight-info .tips-list li {
+            margin-bottom: 8px;
+        }
+        
+        .flight-info .flight-search {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .flight-info .flight-search-btn {
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .flight-info .flight-search-btn svg {
+            margin-right: 8px;
+            fill: white;
+        }
         
         @media (max-width: 600px) {
             h1 {
@@ -760,7 +900,91 @@
                 <li>プライベートプール付き</li>
             </ul>
         </div>
+        <div class="section-divider"></div>
 
+        <section class="flight-info">
+            <h2><span class="emoji">✈️</span> 日本からの航空券情報</h2>
+            <div class="highlight-box">
+                <!-- Airplane Icon -->
+                <div class="flight-icon">
+                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22 16.21V15L16 12L10 8L8 2L6 4L4 8L2 10L4 12L6 16L8 22L10 20L12 16L15 14L22 12V10.79L18 12L12 8L10 4L8 6L6.5 9.5L4 11L6 12L8 16L10 19L12 17L16 14L22 12V10.79Z" fill="var(--primary-color)"/>
+                    </svg>
+                </div>
+                
+                <!-- Price Summary -->
+                <h3>東京→トゥールーズ 往復航空券の目安</h3>
+                <ul class="price-summary">
+                    <li><strong>¥180,000～¥550,000</strong></li>
+                    <li>🔹 最安値時期：1月～3月（¥180,000～）</li>
+                    <li>🔹 繁忙期：7月～8月（¥350,000～）</li>
+                </ul>
+        
+                <!-- Airline Comparison -->
+                <div class="price-comparison">
+                    <h4>主要航空会社別料金</h4>
+                    <div class="airline-scroller">
+                        <div class="airline-card">
+                            <div class="airline-logo af">AF</div>
+                            <p>¥200,000～<br><small>パリ経由</small></p>
+                        </div>
+                        <div class="airline-card">
+                            <div class="airline-logo lh">LH</div>
+                            <p>¥190,000～<br><small>フランクフルト経由</small></p>
+                        </div>
+                        <div class="airline-card">
+                            <div class="airline-logo qr">QR</div>
+                            <p>¥180,000～<br><small>ドーハ経由</small></p>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Seasonal Prices -->
+                <h3>季節別価格傾向</h3>
+                <div class="seasonal-prices">
+                    <div class="month-tag winter">
+                        <span>1月～3月</span>
+                        <strong>¥180,000～</strong>
+                        <small>（最安値）</small>
+                    </div>
+                    <div class="month-tag spring">
+                        <span>4月～6月</span>
+                        <strong>¥220,000～</strong>
+                    </div>
+                    <div class="month-tag summer">
+                        <span>7月～8月</span>
+                        <strong>¥350,000～</strong>
+                        <small>（繁忙期）</small>
+                    </div>
+                    <div class="month-tag autumn">
+                        <span>9月～12月</span>
+                        <strong>¥250,000～</strong>
+                    </div>
+                </div>
+                <p class="price-disclaimer">
+                    上記は目安です。航空会社や予約時期により変動します。
+                </p>
+        
+                <!-- Booking Tips -->
+                <div class="booking-tips">
+                    <h3>🎯 お得に予約するコツ</h3>
+                    <ul class="tips-list">
+                        <li><strong>3～6ヶ月前</strong>に予約（最大¥50,000お得）</li>
+                        <li>火曜日～木曜日出発を選ぶ</li>
+                        <li>ボルドー空港到着＋電車移動（¥20,000～¥40,000節約）</li>
+                    </ul>
+                    
+                    <div class="flight-search">
+                        <a href="https://www.google.com/travel/flights" target="_blank" class="email-btn flight-search-btn">
+                            <svg width="18" height="18" viewBox="0 0 24 24">
+                                <path d="M10 18v-6l5 3-5 3zm7-15H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 16H7V5h10v14z"/>
+                            </svg>
+                            航空券を検索
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
         <div class="section-divider"></div>
 
         <h2><span class="emoji">💰</span> 料金プラン</h2>
