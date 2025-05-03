@@ -556,6 +556,79 @@
                 top: -8px;
             }
         }
+            <style>
+        /* New responsive table styles */
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        table {
+            min-width: 600px;
+        }
+        
+        @media (max-width: 600px) {
+            table {
+                min-width: 100%;
+            }
+            
+            /* Responsive table cells */
+            td {
+                display: block;
+                text-align: right;
+                padding-left: 50%;
+                position: relative;
+                border-bottom: 1px solid #e0d5c8;
+            }
+            
+            td:before {
+                content: attr(data-label);
+                position: absolute;
+                left: 10px;
+                width: 45%;
+                padding-right: 10px;
+                font-weight: bold;
+                text-align: left;
+                color: var(--primary-color);
+            }
+            
+            .price {
+                text-align: right;
+            }
+            
+            .package-benefits {
+                text-align: right;
+                padding-right: 0;
+            }
+            
+            .package-benefits li {
+                text-align: right;
+            }
+        }
+
+        /* Package type boxes */
+        .package-types {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .package-type {
+            flex: 1;
+            min-width: 250px;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .urban-combo {
+            background: var(--highlight-color);
+        }
+        
+        .ariege-focused {
+            background: var(--secondary-color);
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -900,6 +973,107 @@
         </ul>
 
         <div class="section-divider"></div>
+
+        <h2><span class="emoji">🛌</span> 宿泊施設</h2>
+        
+        <div class="accommodation-card">
+            <h3>1. 農家ゲストハウス</h3>
+            <p>1泊 ¥13,000〜¥19,000（朝食込）</p>
+            <ul>
+                <li>共同キッチン（地元食材提供）</li>
+                <li>ピレネー山脈の眺め</li>
+                <li>夕食オプション: +¥4,000/人</li>
+            </ul>
+        </div>
+
+        <div class="accommodation-card">
+            <h3>2. セルフケータリングコテージ</h3>
+            <p>1泊 ¥16,000〜¥24,000（2-4名様用）</p>
+            <ul>
+                <li>完全装備のキッチン</li>
+                <li>パン屋・工房まで徒歩圏内</li>
+                <li>無料駐車場+ウェルカムバスケット</li>
+            </ul>
+        </div>
+
+        <div class="accommodation-card">
+            <h3>3. プレミアムオプション</h3>
+            <p>1泊 ¥32,000〜</p>
+            <ul>
+                <li>歴史的マナーハウスまたはエコロッジ</li>
+                <li>プライベートプール付き</li>
+            </ul>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- Updated Package Tables with Mobile Fix -->
+        <h2><span class="emoji">💰</span> 料金プラン</h2>
+        
+        <div class="highlight-box">
+            <h3>ご旅行スタイルにお選びください</h3>
+            <div class="package-types">
+                <div class="package-type urban-combo">
+                    <h4>🏙️ 都市＋田舎コンビネーション</h4>
+                    <p>パリ/トゥールーズ観光と組み合わせる方に</p>
+                </div>
+                <div class="package-type ariege-focused">
+                    <h4>🌄 アリエージュ専用ご旅行</h4>
+                    <p>日本から直接お越しの方に最適</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>プラン</th>
+                        <th>対象</th>
+                        <th>特典</th>
+                        <th class="price">料金 (1人あたり)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="プラン"><strong>週末体験</strong><br>(2日1泊)</td>
+                        <td data-label="対象">都市組合せ</td>
+                        <td data-label="特典">
+                            <ul class="package-benefits">
+                                <li>農場体験＋チーズ作り</li>
+                                <li>洞窟見学</li>
+                            </ul>
+                        </td>
+                        <td class="price" data-label="料金">¥56,000</td>
+                    </tr>
+                    <tr>
+                        <td data-label="プラン"><strong>深層体験</strong><br>(5日4泊)</td>
+                        <td data-label="対象">日本直行</td>
+                        <td data-label="特典">
+                            <ul class="package-benefits">
+                                <li>全てのワークショップ</li>
+                                <li>自然湖アクセス</li>
+                                <li>地元家庭招待</li>
+                            </ul>
+                        </td>
+                        <td class="price" data-label="料金">¥168,000<br><span class="discount">(¥42,000/日)</span></td>
+                    </tr>
+                    <tr>
+                        <td data-label="プラン"><strong>完全没入</strong><br>(8日7泊)</td>
+                        <td data-label="対象">日本直行</td>
+                        <td data-label="特典">
+                            <ul class="package-benefits">
+                                <li>上記全て＋</li>
+                                <li>プライベートガイド</li>
+                                <li>特別記念品</li>
+                                <li>空港送迎</li>
+                            </ul>
+                        </td>
+                        <td class="price" data-label="料金">¥245,000<br><span class="discount">(¥35,000/日)</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
         <h2><span class="emoji">💰</span> 料金プラン</h2>
         
