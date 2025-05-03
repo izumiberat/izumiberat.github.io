@@ -485,6 +485,32 @@
                 grid-template-columns: 1fr;
             }
         }
+            /* ======================
+           LOGO STYLES 
+           ====================== */
+            .logo-container {
+                text-align: center;
+                margin: 20px 0;
+                padding: 15px 0;
+            }
+            
+            .tour-logo {
+                max-width: 300px;
+                height: auto;
+                border-radius: 8px;
+                box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+                transition: transform 0.3s ease;
+            }
+            
+            .tour-logo:hover {
+                transform: scale(1.03);
+            }
+            
+            @media (max-width: 600px) {
+                .tour-logo {
+                    max-width: 200px;
+                }
+            }
     </style>
 </head>
 <body>
@@ -492,6 +518,13 @@
         <h1>アリエージュ農場体験ツアー<br>
         <span style="font-size: 0.7em; font-weight: normal;">~観光客のいないフランス田舎へ~</span></h1>
 
+        <!-- Logo Section -->
+        <div class="logo-container">
+            <img src="https://i.imgur.com/O5SR5pB.jpeg" 
+                 alt="アリエージュ農場体験ツアーロゴ" 
+                 class="tour-logo"
+                 loading="lazy">
+        </div>
         <!-- Hero Image -->
         <picture>
             <source srcset="https://i.imgur.com/rnRGkvP.jpeg" type="image/jpeg">
