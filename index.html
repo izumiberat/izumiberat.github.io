@@ -174,44 +174,94 @@
     }
     
     /* UPDATED TABLE STYLES START HERE */
+/* UPDATED TABLE STYLES */
+.table-container {
+    width: 100%;
+    margin: 20px 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    margin-left: -10px;
+    margin-right: -10px;
+    width: calc(100% + 20px);
+}
+
+table {
+    width: 100%;
+    min-width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+th {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+td {
+    padding: 12px;
+    border-bottom: 1px solid #e0d5c8;
+    vertical-align: top;
+}
+
+.price {
+    text-align: right;
+    font-weight: bold;
+}
+
+.discount {
+    color: var(--primary-color);
+    font-size: 0.8em;
+    font-weight: normal;
+    display: block;
+}
+
+@media (max-width: 600px) {
     .table-container {
-        width: 100%;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        margin: 20px 0;
+        margin-left: -15px;
+        margin-right: -15px;
+        width: calc(100% + 30px);
     }
     
     table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 0;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    
-    th {
-        background-color: var(--primary-color);
-        color: white;
-        padding: 12px;
-        text-align: left;
+        font-size: 0.9rem;
     }
     
     td {
-        padding: 12px;
+        display: block;
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
         border-bottom: 1px solid #e0d5c8;
-        vertical-align: top;
+    }
+    
+    td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        width: 45%;
+        padding-right: 10px;
+        font-weight: bold;
+        text-align: left;
+        color: var(--primary-color);
     }
     
     .price {
         text-align: right;
-        font-weight: bold;
     }
     
-    .discount {
-        color: var(--primary-color);
-        font-size: 0.8em;
-        font-weight: normal;
-        display: block;
+    .package-benefits {
+        text-align: right;
+        padding-right: 0;
     }
+    
+    .package-benefits li {
+        text-align: right;
+    }
+}
     /* UPDATED TABLE STYLES END HERE */
     
     .section-divider {
