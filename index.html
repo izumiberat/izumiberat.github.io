@@ -178,95 +178,110 @@
             width: 100%;
             margin: 20px 0;
             overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            -ms-overflow-style: -ms-autohiding-scrollbar;
-            margin-left: -15px;
-            margin-right: -15px;
-            width: calc(100% + 30px);
         }
-    
+        
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 0;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            table-layout: auto; /* Added this to control column widths */
+            table-layout: auto;
         }
-    
+        
         th, td {
             padding: 12px;
             border-bottom: 1px solid #e0d5c8;
-            word-break: break-word; /* Ensures text wraps */
+            word-break: break-word;
         }
-    
+        
         th {
             background-color: var(--primary-color);
             color: white;
             text-align: left;
-            min-width: 80px; /* Minimum width for headers */
         }
-    
+        
         .price {
             text-align: right;
             font-weight: bold;
+            color: var(--primary-color);
         }
-    
+        
         .discount {
             color: var(--primary-color);
             font-size: 0.8em;
             font-weight: normal;
             display: block;
         }
-    
+        
+        /* Highlight recommended rows with background color only */
+        table tbody tr:nth-child(2), 
+        table tbody tr:nth-child(3) {
+            background-color: #f0e6d6;
+        }
+        
+        /* Mobile styles */
         @media (max-width: 600px) {
             .table-container {
-                margin-left: -15px;
-                margin-right: -15px;
-                width: calc(100% + 30px);
+                margin-left: 0;
+                margin-right: 0;
+                width: 100%;
             }
-    
+            
             table {
                 font-size: 0.9rem;
             }
-    
-            th, td {
-                padding: 8px;
+            
+            thead {
+                display: none;
+            }
+            
+            tr {
                 display: block;
-                width: 100% !important; /* Force full width */
+                margin-bottom: 15px;
+                border: 1px solid #e0d5c8;
+                border-radius: 8px;
+                padding: 10px;
             }
-    
+            
             td {
+                display: flex;
+                justify-content: space-between;
+                padding: 8px;
                 text-align: right;
-                padding-left: 45%;
-                position: relative;
+                border-bottom: 1px dashed #e0d5c8;
             }
-    
+            
+            td:last-child {
+                border-bottom: none;
+            }
+            
             td:before {
                 content: attr(data-label);
-                position: absolute;
-                width: 40%; /* Reduce width to allow more space for content */
-                left: 5px;
-                padding-right: 10px;
                 font-weight: bold;
-                text-align: left;
                 color: var(--primary-color);
+                text-align: left;
+                padding-right: 10px;
             }
-    
-            /* Ensure the price column aligns properly */
+            
             .price {
                 text-align: right;
-                padding-right: 10px;
             }
-    
+            
             .package-benefits {
-                text-align: right;
-                padding-right: 0;
+                display: flex;
+                flex-direction: column;
             }
-    
             .package-benefits li {
                 text-align: right;
-                margin-right: 0;
-                padding-right: 0;
+                list-style-type: none;
+                position: relative;
+                padding-left: 15px;
+            }
+            .package-benefits li:before {
+                content: "•";
+                position: absolute;
+                left: 0;
+                color: var(--primary-color);
             }
         }
         /* UPDATED TABLE STYLES END HERE */
@@ -539,21 +554,6 @@
         table tbody tr:nth-child(3) {
             background-color: #f0e6d6;
             position: relative;
-        }
-        
-        table tbody tr:nth-child(2)::before,
-        table tbody tr:nth-child(3)::before {
-            content: "✨ おすすめ";
-            position: absolute;
-            left: 5px;          /* Changed from -10px to avoid column overlap */
-            top: -12px;         /* Position above the row */
-            background: var(--primary-color);
-            color: white;
-            padding: 3px 8px;
-            border-radius: 15px;
-            font-size: 0.7em;
-            z-index: 1;        /* Ensure it appears above other content */
-            white-space: nowrap; /* Prevent line breaks */
         }
         
         .swimming-highlight {
