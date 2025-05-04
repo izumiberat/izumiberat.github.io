@@ -190,7 +190,7 @@
             border-collapse: collapse;
             margin: 0;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            table-layout: fixed; /* Added this to control column widths */
+            table-layout: auto; /* Added this to control column widths */
         }
     
         th, td {
@@ -237,23 +237,25 @@
     
             td {
                 text-align: right;
-                padding-left: 50%;
+                padding-left: 45%;
                 position: relative;
             }
     
             td:before {
                 content: attr(data-label);
                 position: absolute;
-                left: 10px;
-                width: 45%;
+                width: 40%; /* Reduce width to allow more space for content */
+                left: 5px;
                 padding-right: 10px;
                 font-weight: bold;
                 text-align: left;
                 color: var(--primary-color);
             }
     
+            /* Ensure the price column aligns properly */
             .price {
                 text-align: right;
+                padding-right: 10px;
             }
     
             .package-benefits {
@@ -263,6 +265,8 @@
     
             .package-benefits li {
                 text-align: right;
+                margin-right: 0;
+                padding-right: 0;
             }
         }
         /* UPDATED TABLE STYLES END HERE */
@@ -541,13 +545,15 @@
         table tbody tr:nth-child(3)::before {
             content: "✨ おすすめ";
             position: absolute;
-            left: -10px;
-            top: 10px;
+            left: 5px;          /* Changed from -10px to avoid column overlap */
+            top: -12px;         /* Position above the row */
             background: var(--primary-color);
             color: white;
             padding: 3px 8px;
             border-radius: 15px;
             font-size: 0.7em;
+            z-index: 1;        /* Ensure it appears above other content */
+            white-space: nowrap; /* Prevent line breaks */
         }
         
         .swimming-highlight {
